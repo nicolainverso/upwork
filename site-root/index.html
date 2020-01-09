@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        blockquote,
+        body,
+        button,
+        dd,
+        dl,
+        figure,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ol,
+        p,
+        pre,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: #fff;
+            min-height: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            font-size: 62.5%;
+            font-family: Camphor, Open Sans, Segoe UI, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            -webkit-font-feature-settings: "pnum";
+            font-feature-settings: "pnum";
+            font-variant-numeric: proportional-nums;
+        }
+        
+        .wrapper {
+            position: relative;
+        }
+        
+        .main-section {
+            position: relative;
+        }
+        
+        .page-intro {
+            display: flex;
+            padding: 120px 20px 140px;
+            max-width: 1040px;
+            margin: 0 auto 80px;
+            flex-wrap: wrap;
+        }
+        
+        .header-padding {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .page-intro .intro-content .intro-title {
+            margin-top: 10px;
+        }
+        
+        .page-intro .intro-content .intro-text {
+            margin-top: 16px;
+        }
+        
+        .common-title {
+            font-weight: 300;
+            font-size: 45px;
+            line-height: 56px;
+            color: #32325d;
+            letter-spacing: -.01em;
+        }
+        
+        .common-medium-text {
+            font-weight: 400;
+            font-size: 19px;
+            line-height: 32px;
+            color: #525f7f;
+        }
+        
+        .common-subtitle {
+            font-weight: 300;
+            color: #6772e5;
+        }
+        
+        .page-intro .intro-right-image {
+            flex: 100%;
+            margin: 0 auto;
+            position: relative;
+            top: 60px;
+        }
+        
+        .page-intro .intro-right-image img {
+            width: 270px;
+        }
+        /* stripe background */
+        
+        .stripes-background {
+            height: auto!important;
+        }
+        
+        .stripes-background.stripe-grid {
+            --stripe-height: 48px;
+            --content-columns: 12;
+            --gutter-columns: 4;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .stripes-background-container {
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-transform: skewY(-12deg);
+            transform: skewY(-12deg);
+        }
+        
+        .stripes-background.ab .grid {
+            height: 200%;
+            -ms-flex-line-pack: end;
+            align-content: end;
+        }
+        
+        .stripes-background-container .grid {
+            grid-template-columns: 1fr;
+            min-width: 0;
+        }
+        
+        .stripes-background-container .grid {
+            --content-column-width: minmax(0, calc(1040px / var(--content-columns)));
+            --gutter-column-width: 1fr;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-rows: repeat(auto-fill, var(--stripe-height));
+            grid-template-columns: [viewport-start] 1fr [left-gutter-start] repeat(var(--gutter-columns), var(--gutter-column-width)) [left-gutter-end content-start] repeat(var(--content-columns), var(--content-column-width)) [content-end right-gutter-start] repeat(var(--gutter-columns), var(--gutter-column-width)) [right-gutter-end] 1fr [viewport-end];
+        }
+        
+        .stripes-background-container .bg {
+            grid-row-end: -3;
+            grid-row: 1/-1;
+            grid-column: 1/-1;
+            z-index: -1;
+        }
+        
+        .stripes-background .bg-stripe-container {
+            overflow: hidden;
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+        }
+        
+        .bg-stripe {
+            grid-row: var(--grid-row);
+            grid-column: var(--grid-column);
+        }
+        
+        .slt9 {
+            background-color: #f6f9fc;
+        }
+        
+        .slt8 {
+            background-color: #e6ebf1;
+        }
+        
+        .slt-blue1 {
+            background-color: #87bbfd;
+        }
+        
+        .slt-blue2 {
+            background-color: #6772e5;
+        }
+        
+        .slt-yellow {
+            background-color: #fcd669;
+        }
+        
+        .slt1 {
+            background-color: #32325d;
+        }
+        
+        .slt-outline {
+            background: transparent;
+            box-shadow: inset 0 0 0 1.5px #e6ebf1;
+        }
+        
+        @media (min-width: 670px) {
+            .page-intro {
+                flex-wrap: nowrap;
+                padding: 150px 20px 40px;
+                margin: 0 auto 120px;
+            }
+            .page-intro>div {
+                flex-basis: 45%;
+            }
+            .header-padding {
+                padding-bottom: 91px;
+            }
+            .page-intro .intro-content {
+                flex-basis: 60%;
+                margin-right: 60px;
+            }
+            h1.common-title {
+                font-size: 53px;
+                line-height: 68px;
+            }
+            .page-intro .intro-content .intro-text {
+                max-width: 90%;
+            }
+            .page-intro .intro-right-image {
+                top: 0;
+                flex-basis: 40%;
+            }
+            .stripes-background.stripe-grid {
+                --stripe-height: 64px;
+            }
+        }
+        
+        @media (min-width: 1040px) {
+            .stripes-background-container .grid {
+                --gutter-column-width: var(--content-column-width);
+                min-width: calc(1040px / var(--content-columns) * (var(--gutter-columns) * 2 + var(--content-columns)));
+            }
+            .bg-stripe-container .grid {
+                --gutter-column-width: var(--content-column-width);
+                min-width: calc(1040px / var(--content-columns) * (var(--gutter-columns) * 2 + var(--content-columns)));
+            }
+        }
+        
+        @font-face {
+            font-family: Camphor;
+            font-weight: 300;
+            src: url(http://www.nicolainverso.it/upwork/test1/fonts/300-light.woff2) format("woff2"), url(http://www.nicolainverso.it/upwork/test1/fonts/300-light.woff) format("woff")
+        }
+        
+        @font-face {
+            font-family: Camphor;
+            font-weight: 400;
+            src: url(http://www.nicolainverso.it/upwork/test1/fonts/400-regular.woff2) format("woff2"), url(http://www.nicolainverso.it/upwork/test1/fonts/400-regular.woff) format("woff")
+        }
+        
+        @font-face {
+            font-family: Camphor;
+            font-weight: 400;
+            font-style: italic;
+            src: url(http://www.nicolainverso.it/upwork/test1/fonts/400-regular-italic.woff2) format("woff2"), url(http://www.nicolainverso.it/upwork/test1/fonts/400-regular-italic.woff) format("woff")
+        }
+        
+        @font-face {
+            font-family: Camphor;
+            font-weight: 500;
+            src: url(http://www.nicolainverso.it/upwork/test1/fonts/500-medium.woff2) format("woff2"), url(http://www.nicolainverso.it/upwork/test1/fonts/500-medium.woff) format("woff")
+        }
+        
+        @font-face {
+            font-family: Camphor;
+            font-weight: 600;
+            src: url(http://www.nicolainverso.it/upwork/test1/fonts/600-bold.woff2) format("woff2"), url(http://www.nicolainverso.it/upwork/test1/fonts/600-bold.woff) format("woff")
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="page-intro">
+            <div class="intro-content">
+                <div class="intro-title">
+                    <h1 class="common-title">The impact of SCA: <span class="common-subtitle">Shaking up Europe’s online economy</span></h1>
+                </div>
+                <div class="intro-text">
+                    <p class="common-medium-text">Analyst firm 451 Research interviewed 500 businesses and 1,000 consumers in April 2019 and found that Europe's online economy risks losing €57 billion when Strong Customer Authentication goes into effect.</p>
+                </div>
+            </div>
+            <div class="intro-right-image">
+                <img src="image.png" alt="">
+            </div>
+        </div>
+
+        <div class="stripes-background stripe-grid ab">
+            <div class="stripes-background-container" style="--height-in-stripes: 0">
+                <div class="grid">
+                    <div class="bg slt9"></div>
+                </div>
+            </div>
+
+            <div class="stripes-background-container bg-stripe-container">
+                <div class="grid">
+                    <div class="bg-stripe slt8" style="--grid-row: -11; --grid-column: 3 / span 2"></div>
+                    <div class="bg-stripe slt-blue1" style="--grid-row: -10; --grid-column: viewport-start / span 4"></div>
+                    <div class="bg-stripe slt-outline" style="--grid-row: -9; --grid-column: -7 / span 5"></div>
+                    <div class="bg-stripe slt-blue1" style="--grid-row: -8; --grid-column: -5 / span 3"></div>
+                    <div class="bg-stripe slt-yellow" style="--grid-row: -4; --grid-column: 1 / span 5"></div>
+                    <div class="bg-stripe slt-blue2" style="--grid-row: -4; --grid-column: -6 / span 5"></div>
+                    <div class="bg-stripe slt-blue2" style="--grid-row: -3; --grid-column: 5 / span 2"></div>
+                    <div class="bg-stripe slt-blue1" style="--grid-row: -3; --grid-column: -11 / span 4"></div>
+                    <div class="bg-stripe slt1" style="--grid-row: -3; --grid-column: -8 / span 4"></div>
+                    <div class="bg-stripe slt8" style="--grid-row: -2; --grid-column: -9 / span 4"></div>
+                    <div class="bg-stripe slt-outline" style="--grid-row: -2; --grid-column: 2 / span 3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
